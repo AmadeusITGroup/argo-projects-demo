@@ -7,5 +7,5 @@ resources:
   - resources/argo-namespace.yaml
   - resources/argo-rollouts-namespace.yaml
   - https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/install.yaml
-  - https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml  - 
+  - https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
   - resources/argocd-ingress.yaml
