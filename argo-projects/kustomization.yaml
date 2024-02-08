@@ -2,10 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-  - resources/argocd-namespace.yaml
-  - resources/argo-namespace.yaml
-  - resources/argo-rollouts-namespace.yaml
-  - https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/install.yaml
-  - https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
-  - resources/argocd-ingress.yaml
+  - argo-cd/argo-cd-app.yaml
+  - argo-workflows/argo-workflows-app.yaml
+  - argo-rollouts/argo-rollouts-app.yaml
