@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argo-workflows
+  namespace: argo
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: argo-workflows.127.0.0.1.nip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: argo-server
+            port:
+              name: web
+        path: /
+        pathType: Prefix

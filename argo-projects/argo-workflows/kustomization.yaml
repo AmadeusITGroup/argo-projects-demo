@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - resources/argo-namespace.yaml
   - https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/install.yaml
+
+patches:
+ - path: patches/change-argo-server-args.yaml
