@@ -10,8 +10,8 @@ patches:
  - path: patches/change-argo-server-args.yaml
    target:
      kind: Deployment
-      name: argo-server
+     name: argo-server
  - path: patches/change-readiness-probe-to-http.yaml
    target:
      kind: Deployment
-      nme: argo-server
+     name: argo-server
