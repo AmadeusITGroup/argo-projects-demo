@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - resources/argo-namespace.yaml
+  - resources/argo-workflow-ingress.yaml
   - https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/install.yaml
 
 patches:
