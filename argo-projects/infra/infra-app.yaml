@@ -11,19 +11,19 @@ spec:
       ref: infra
     - chart: kube-prometheus-stack
       targetRevision: ~45.7.0
-      repoUrl: https://prometheus-community.github.io/helm-charts
+      repoURL: https://prometheus-community.github.io/helm-charts
       helm:
         valueFiles:
           - $infra/values/values-prom-stack.yaml
     - chart: ingress-nginx
       targetRevision: 4.5.2
-      repoUrl: https://kubernetes.github.io/ingress-nginx
+      repoURL: https://kubernetes.github.io/ingress-nginx
       helm:
         valueFiles:
           - $infra/values/values-ingress-controller.yaml
     - chart: docker-registry
       targetRevision: 2.2.2
-      repoUrl: https://helm.twun.io
+      repoURL: https://helm.twun.io
       helm:
         valueFiles:
           - $infra/values/values-docker-registry.yaml
