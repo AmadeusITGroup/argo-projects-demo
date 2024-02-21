@@ -1,0 +1,29 @@
+prometheusOperator:
+  tls:
+    enabled: false
+  admissionWebhooks:
+    # Disabled as post-renderer doesn't handle helm lifecycle hooks (https://github.com/helm/helm/issues/7891)
+    enabled: false
+prometheus-node-exporter:
+  hostRootFsMount:
+    enabled: false
+prometheus:
+  prometheusSpec:
+    # Don't restrict to the default namespace 
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts: 
+      # Can't use template in values...
+      - prometheus-console.127.0.0.1.nip.io
+grafana:
+  # User will be prompted at first connection to change this password
+  adminPassword: admin
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts: 
+      # Grafana doesn't allow templating in values
+      - grafana-monitoring.127.0.0.1.nip.io

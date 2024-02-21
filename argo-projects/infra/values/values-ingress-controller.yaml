@@ -1,0 +1,13 @@
+controller:
+  containerPort:
+    http: 12080
+    https: 12443
+  extraArgs:
+    http-port: "12080"
+    https-port: "12443"
+  admissionWebhooks:
+    # Work-around "failed calling webhook "validate.nginx.ingress.kubernetes.io"
+    enabled: false
+  watchIngressWithoutClass: true
+  ingressClassResource:
+    default: true

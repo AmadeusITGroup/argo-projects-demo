@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  # Hosts can't be templatized in docker-registry chart, so we can't use .Values.global.domain
+  hosts: ["registry.127.0.0.1.nip.io"]
+  annotations:
+    # Disable body size check to allow pushing images
+    # https://github.com/nginxinc/kubernetes-ingress/issues/21
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"  # For "official" nginx ingress
+    nginx.org/client-max-body-size: "0" # For nginx' ingress
+# Use a NodePort so that kubelet can access the registry as well (on localhost:32000)
+service:
+  type: "NodePort"
+  nodePort: 32000

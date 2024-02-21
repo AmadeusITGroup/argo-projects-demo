@@ -5,3 +5,4 @@ resources:
   - argo-cd/argo-cd-app.yaml
   - argo-workflows/argo-workflows-app.yaml
   - argo-rollouts/argo-rollouts-app.yaml
+  - infra/infra-app.yaml

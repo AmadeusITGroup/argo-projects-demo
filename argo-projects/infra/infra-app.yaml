@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra
+spec:
+  project: default
+  sources:
+    - repoURL: 'https://github.com/OpenGuidou/argo-projects-demo.git'
+      path: argo-projects/infra
+      targetRevision: HEAD
+      ref: infra
+    - chart: kube-prometheus-stack
+      targetRevision: ~45.7.0
+      repoUrl: https://prometheus-community.github.io/helm-charts
+      helm:
+        valueFiles:
+          - $infra/values/values-prom-stack.yaml
+    - chart: ingress-nginx
+      targetRevision: 4.5.2
+      repoUrl: https://kubernetes.github.io/ingress-nginx
+      helm:
+        valueFiles:
+          - $infra/values/values-ingress-controller.yaml
+    - chart: docker-registry
+      targetRevision: 2.2.2
+      repoUrl: https://helm.twun.io
+      helm:
+        valueFiles:
+          - $infra/values/values-docker-registry.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: infra
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
