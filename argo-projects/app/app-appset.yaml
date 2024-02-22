@@ -28,7 +28,7 @@ spec:
             - '../overlays/{{ phase }}/values-{{ phase }}.yaml' # App Helm Chart values. Order matters YAML reads from top to bottom.
       destination:
         server: 'https://kubernetes.default.svc'
-        namespace: '{{ phase }}'
+        namespace: 'app-{{ phase }}'
       syncPolicy:
         automated:
           prune: true
