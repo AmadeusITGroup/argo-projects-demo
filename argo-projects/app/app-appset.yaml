@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/OpenGuidou/argo-projects-demo.git
+        revision: HEAD
+        files:
+          - path: "argo-projects/app/generators/*.json"
+  template:
+    metadata:
+      name: 'app-{{ phase }}'
+      annotations:
+        notifications.argoproj.io/subscribe.on-sync-success.sync-webhook: "" 
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/OpenGuidou/argo-projects-demo.git
+        targetRevision: 'HEAD'
+        path: 'argo-projects/app/manifests/base'
+        helm:
+          ignoreMissingValueFiles: true
+          releaseName: 'app-{{ phase }}'
+          valueFiles: 
+            - 'values.yaml' # App Helm Chart values. Order matters YAML reads from top to bottom.
+            - '../overlays/{{ phase }}/values-{{ phase }}.yaml' # App Helm Chart values. Order matters YAML reads from top to bottom.
+      destination:
+        server: 'https://kubernetes.default.svc'
+        namespace: '{{ phase }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - PruneLast=true
+        retry:
+          limit: 1

@@ -6,8 +6,7 @@ spec:
   project: default
   sources:
     - repoURL: 'https://github.com/OpenGuidou/argo-projects-demo.git'
-      path: argo-projects/infra
-      targetRevision: main
+      targetRevision: HEAD
       ref: infra
     - chart: kube-prometheus-stack
       targetRevision: ~45.7.0

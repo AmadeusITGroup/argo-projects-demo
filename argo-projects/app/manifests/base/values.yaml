@@ -1,0 +1,151 @@
+# Default values for helm-jconnect-edge.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+# service account to target kube API
+serviceAccountName: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  {}
+  # fsGroup: 2000
+
+config:
+  fileName: stream-configs.txt
+  mountPath: /work/config
+
+securityContext:
+  {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources:
+  # tag::requests[]
+  requests:
+    ephemeralStorage:
+    cpu:
+    memory:
+  # end::requests[]
+  # tag::javaHeap[]
+  javaHeap:
+    maxMemPercentage: 75
+  # end::javaHeap[]
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Empty value to ensure the global one stays used by default to avoid nil error in templating
+domain:
+
+image:
+  name: agroprojects/demo-app
+  version: 1.0
+  native: false
+
+annotations: { }
+labels: { }
+podLabels: { }
+
+javaOptions:
+
+
+env: { }
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 3
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 0
+  periodSeconds: 10
+  timeoutSeconds: 1
+  successThreshold: 1
+  failureThreshold: 3
+  
+streams: [ ]
+keyValues: [ ]
+
+global:
+  domain: 127.0.0.1.nip.io
+
+  infra: {}
+
+  # Default to the first portion of release name
+  applicationName:
+
+  javaOptions:
+
+  annotations: { }
+  labels: { }
+  nodeSelector: { }
+  affinity: { }
+  tolerations: [ ]
+
+  env: {}
+
+  # tag::resources[]
+  resources:
+    jvm:
+      requests:
+        ephemeralStorage: 400Mi
+        cpu: 20m
+        memory: 256Mi
+    native:
+      requests:
+        ephemeralStorage: 400Mi
+        cpu: 20m
+        memory: 160Mi
+  # end::resources[]
+
+rollout:
+  enabled: false
+  successfulRunHistoryLimit: 5
+  unsuccessfulRunHistoryLimit: 5
+  revisionHistoryLimit: 10
+  strategy:
+  # Example:
+  # strategy:
+  #   canary:
+  #     steps:
+  #     - setWeight: 20
+  #     - pause: {}
+  #     - setWeight: 40
+  #     - pause: {duration: 40s}
+  #     - setWeight: 60
+  #     - pause: {duration: 20s}
+  #     - setWeight: 80
+  #     - pause: {duration: 20s}
+
+phase: dev

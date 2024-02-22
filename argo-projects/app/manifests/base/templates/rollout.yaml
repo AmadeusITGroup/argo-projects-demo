@@ -1,0 +1,26 @@
+{{- if .Values.rollout.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ include "my-app.fullname" . }}
+  labels:
+    {{- include "my-app.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  analysis:
+    successfulRunHistoryLimit: {{ .Values.rollout.successfulRunHistoryLimit }}
+    unsuccessfulRunHistoryLimit: {{ .Values.rollout.unsuccessfulRunHistoryLimit }}
+  selector:
+    matchLabels:
+      {{- include "my-app.selectorLabels" . | nindent 6 }}
+  workloadRef: 
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "my-app.fullname" .  }}
+  revisionHistoryLimit: {{ .Values.rollout.revisionHistoryLimit }}
+  strategy: 
+    {{ toYaml .Values.rollout.strategy | nindent 4 }}
+{{- end }}

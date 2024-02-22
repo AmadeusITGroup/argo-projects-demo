@@ -15,7 +15,7 @@ You will also need:
 In your kubernetes cluster, we'll start by installing Argo CD.
 
 ```bash
-./argo-projects/install-argo-cd.sh
+./scripts/install-argo-cd.sh
 ```
 
 Once installed, we'll use Argo CD to deploy absolutely everything in the cluster. It will even watch and patch itself !
@@ -52,15 +52,15 @@ argocd admin initial-password -n argocd
 
 You can now create an application using the 'New App' button.
 
-// insert button picture
+![image](./assets/New-App.png)
 
 You can use the following parameters as reference:
 
-// insert app picture
+![image](./assets/New-App-Details.png)
 
 You should now have all components deployed in your cluster:
 
-// insert argocd app state
+![image](./assets/ArgoCD-Apps-state.png)
 
 **This is it**. This was the last manual action you had to perform on the platform !
 
@@ -70,3 +70,11 @@ You can now access the UI at:
 
 - Argo CD: https://argocd.127.0.0.1.nip.io/
 - Argo Workflows (+ Events): https://argo-workflows.127.0.0.1.nip.io/workflows 
+
+### Troubleshooting
+
+In case the ArgoCD UI doesn't load (too many redirects), you might need to restart the argo-server pod to take into account the latest options.
+
+```bash
+kubectl rollout restart deployment argocd-server -n argocd
+```

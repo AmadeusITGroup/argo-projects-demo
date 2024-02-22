@@ -6,3 +6,4 @@ resources:
   - argo-workflows/argo-workflows-app.yaml
   - argo-rollouts/argo-rollouts-app.yaml
   - infra/infra-app.yaml
+  - app/app-appset.yaml
