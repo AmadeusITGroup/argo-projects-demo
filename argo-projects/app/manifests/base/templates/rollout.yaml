@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ include "my-app.fullname" . }}
+  name: {{ include "my-app.fullname" . }}-rollout
   labels:
     {{- include "my-app.labels" . | nindent 4 }}
 spec:
