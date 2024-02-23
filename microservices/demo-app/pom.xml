@@ -24,7 +24,7 @@
     <quarkus.container-image.push>false</quarkus.container-image.push>
     <quarkus.container-image.name>${project.artifactId}</quarkus.container-image.name>
     <quarkus.container-image.group>argoprojects</quarkus.container-image.group>
-    <quarkus.container-image.tag>1.1</quarkus.container-image.tag>
+    <quarkus.container-image.tag>1.0</quarkus.container-image.tag>
 
     <docker.push.registry>registry.127.0.0.1.nip.io:80</docker.push.registry>
     <helm.virtual-repository>localhost:32000</helm.virtual-repository>
@@ -152,9 +152,6 @@
           <execution>
             <id>package-docker-image</id>
             <phase>package</phase>
-            <goals>
-              <goal>build</goal>
-            </goals>
           </execution>
           <execution>
             <id>push-docker-image</id>
