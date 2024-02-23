@@ -6,7 +6,7 @@ resources:
   - resources/argo-workflow-ingress.yaml
   - https://github.com/argoproj/argo-workflows/releases/download/v3.5.4/install.yaml
   #- resources/eventbus-jetstream.yaml
-  - resources/sync-success-eventsource.yaml
+  #- resources/sync-success-eventsource.yaml
   - resources/webhook-service.yaml
   #- resources/workflow-templates.yaml
   #- resources/workflow-trigger-sensor-app.yaml
