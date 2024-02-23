@@ -7,6 +7,10 @@ spec:
     - port: metrics
       path: /q/metrics
       scheme: http
+  namespaceSelector:
+    matchNames:
+      - app-test
+      - app-prod
   selector:
     matchLabels:
       prometheus.io/scrape-app: "true"

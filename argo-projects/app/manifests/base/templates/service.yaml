@@ -6,6 +6,9 @@ metadata:
   labels:
     {{- include "my-app.labels" . | nindent 4 }}
     prometheus.io/scrape-app: "true"
+  annotations:
+    prometheus.io/port: "metrics"
+    prometheus.io/scrape: "true"
 spec:
   ports:
     - name: http
