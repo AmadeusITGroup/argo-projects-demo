@@ -1,0 +1,67 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: webhook-app-promotion
+spec:
+  template:
+    serviceAccountName: argo
+  dependencies:
+    - name: webhook-dep
+      eventSourceName: webhook
+      eventName: appSyncSuccess
+  triggers:
+    - template:
+        name: webhook-app-promotion
+        k8s:
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: app-
+                labels:
+                  scenario: syncSuccess
+                  phase: ""
+              spec:
+                ttlStrategy:
+                  secondsAfterCompletion: 43200 # Time to live in seconds after workflow is completed / 12h
+                arguments:
+                  parameters:
+                    - name: test_target
+                    - name: source_commit
+                    - name: target_phase
+                    - name: test_docker_image
+                      value: "argoprojects/test-campaign:latest"
+                    - name: test_docker_command
+                      value: "./launchTests.sh"
+                    - name: git_repo
+                      value: "https://%s:%s@github.com/OpenGuidou/argo-projects-demo.git"
+                    - name: git_credentials_secret
+                      value: "github-credentials"
+                workflowTemplateRef:
+                  name: workflow-template-validate-then-promote
+          parameters:
+            - src:
+                dependencyName: webhook-dep
+                dataTemplate: "{{ .Input.body.phase }}"
+              dest: spec.arguments.parameters.0.value
+            - src:
+                dependencyName: webhook-dep
+                dataTemplate: "{{ .Input.body.source_commit }}"
+              dest: spec.arguments.parameters.1.value
+            - src:
+                dependencyName: webhook-dep
+                dataTemplate: "{{ .Input.body.target_phase }}"
+              dest: spec.arguments.parameters.2.value
+            - src:
+                dependencyName: webhook-dep
+                dataTemplate: "{{ .Input.body.origin_phase }}-"
+              dest: metadata.generateName
+              operation: append
+            - src:
+                dependencyName: webhook-dep
+                dataTemplate: "{{ .Input.body.origin_phase }}"
+              dest: metadata.labels.phase
+              operation: append

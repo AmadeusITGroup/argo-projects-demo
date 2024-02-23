@@ -1,0 +1,41 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: EventBus
+metadata:
+  name: argo-eventbus
+spec:
+  jetstream:
+    version: 2.8.2
+    replicas : 1
+    containerTemplate:
+      resources:
+        limits:
+          cpu: 1
+          memory: 1500Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
+    metricsContainerTemplate:
+      resources:
+        limits:
+          cpu: 500m
+          memory: 200Mi
+        requests:
+          cpu: 200m
+          memory: 100Mi
+    reloaderContainerTemplate:
+      resources:
+        limits:
+          cpu: 500m
+          memory: 200Mi
+        requests:
+          cpu: 200m
+          memory: 100Mi
+    streamConfig: |
+      maxMsgs: 50000
+      maxAge: 24h
+      maxBytes: -1
+      duplicates: 300s
+    settings: |
+      max_file_store: 1G
+      max_memory_store: 1G

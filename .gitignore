@@ -26,3 +26,6 @@ hs_err_pid*
 replay_pid*
 
 .quarkus
+
+test-campaign/*.html
+test-campaign/*.xml

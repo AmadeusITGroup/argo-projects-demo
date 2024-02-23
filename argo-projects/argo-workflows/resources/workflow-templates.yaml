@@ -1,0 +1,121 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: workflow-template-run-integration-tests
+spec:
+  entrypoint: integration-tests
+  podGC:
+    strategy: OnPodSuccess
+  templates:
+    - name: integration-tests
+      inputs:
+        parameters:
+          - name: test_target
+          - name: test_docker_image
+          - name: test_docker_command
+      container:
+        image: "localhost:32000/{{inputs.parameters.test_docker_image}}"
+        resources:
+          requests:
+            memory: 1Gi
+          limits:
+            memory: 2Gi
+        command:
+          - "{{inputs.parameters.test_docker_command}}"
+        args:
+          - "{{inputs.parameters.test_target}}"
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: workflow-template-promote-to-next-phase
+spec:
+  entrypoint: promotion
+  podGC:
+    strategy: OnPodSuccess
+  templates:
+    - name: promotion
+      inputs:
+        parameters:
+          - name: git_repo
+          - name: source_commit
+          - name: target_folder
+          - name: git_credentials_secret
+      container:
+        image: localhost:32000/argoprojects/git-promotion:latest
+        command:
+          - "python3"
+          - "promote.py"
+        args:
+          - "--git-repo"
+          - "{{inputs.parameters.git_repo}}"
+          - "--source-commit"
+          - "{{inputs.parameters.source_commit}}"
+          - "--target-folder"
+          - "{{inputs.parameters.target_folder}}"
+        env:
+          - name: GIT_USER
+            valueFrom:
+              secretKeyRef:
+                name: "{{inputs.parameters.git_credentials_secret}}"
+                key: username
+          - name: GIT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: "{{inputs.parameters.git_credentials_secret}}"
+                key: password
+          - name: GIT_EMAIL
+            valueFrom:
+              secretKeyRef:
+                name: "{{inputs.parameters.git_credentials_secret}}"
+                key: email
+---
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: workflow-template-validate-then-promote
+spec:
+  entrypoint: validate-then-promote
+  podGC:
+    strategy: OnPodSuccess
+  arguments:
+    parameters:
+      - name: test_target
+      - name: test_docker_image
+      - name: test_docker_command
+      - name: git_repo
+      - name: source_commit
+      - name: target_folder
+      - name: git_credentials_secret
+  templates:
+    - name: validate-then-promote
+      dag:
+        tasks:
+          - name: promote-to-next-phase
+            depends: "run-integration-tests"
+            templateRef:
+              name: workflow-template-promote-to-next-phase
+              template: promotion
+            arguments:
+              parameters:
+                - name: git_repo
+                  value: "{{workflow.parameters.git_repo}}"
+                - name: source_commit
+                  value: "{{workflow.parameters.source_commit}}"
+                - name: target_folder
+                  value: "{{workflow.parameters.target_folder}}"
+                - name: git_credentials_secret
+                  value: "{{workflow.parameters.git_credentials_secret}}"
+          - name: run-integration-tests
+            templateRef:
+              name: workflow-template-run-integration-tests
+              template: integration-tests
+            arguments:
+              parameters:
+                - name: test_target
+                  value: "{{workflow.parameters.test_target}}"
+                - name: test_docker_image
+                  value: "{{workflow.parameters.test_docker_image}}"
+                - name: test_docker_command
+                  value: "{{workflow.parameters.test_docker_command}}"
