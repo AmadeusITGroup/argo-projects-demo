@@ -8,8 +8,8 @@ resources:
   - resources/eventbus-jetstream.yaml
   - resources/sync-success-eventsource.yaml
   - resources/webhook-service.yaml
-  - resources/workflow-templates.yaml
-  - resources/workflow-trigger-sensor-app.yaml
+  #- resources/workflow-templates.yaml
+  #- resources/workflow-trigger-sensor-app.yaml
 
 patches:
  - path: patches/change-argo-server-args.yaml
