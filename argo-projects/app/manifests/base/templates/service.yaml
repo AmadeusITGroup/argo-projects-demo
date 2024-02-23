@@ -1,0 +1,17 @@
+---
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: {{ include "my-app.fullname" . }}
+  labels:
+    {{- include "my-app.labels" . | nindent 4 }}
+spec:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+    - name: metrics
+      port: 9000
+      targetPort: 9000
+  selector:
+    {{- include "my-app.selectorLabels" . | nindent 4 }}

@@ -39,8 +39,10 @@ spec:
             {{ include "my-app.resources" . | nindent 12 }}
           {{- include "my-app.container.image" . | nindent 10 }}
           ports:
-            # Prometheus-dedicated port alias
             - containerPort: 8080
+              name: http
+            # Prometheus-dedicated port alias
+            - containerPort: 9000
               name: metrics
           env:
             - name: POD_NAME
@@ -63,7 +65,7 @@ spec:
             successThreshold: {{ .Values.livenessProbe.successThreshold }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
             httpGet:
-              port: 8080
+              port: 9000
               path: /q/health/live
           {{- end }}
           {{- if .Values.readinessProbe.enabled }}
@@ -74,7 +76,7 @@ spec:
             successThreshold: {{ .Values.readinessProbe.successThreshold }}
             failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
             httpGet:
-              port: 8080
+              port: 9000
               path: /q/health/ready
           {{- end }}
       {{- with .Values.nodeSelector }}
