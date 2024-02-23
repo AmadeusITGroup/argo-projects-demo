@@ -66,7 +66,7 @@ domain:
 
 image:
   name: agroprojects/demo-app
-  registry: infra-docker-registry.infra.svc.cluster.local:5000
+  registry: localhost:32000
   version: 1.0
   native: false
 
