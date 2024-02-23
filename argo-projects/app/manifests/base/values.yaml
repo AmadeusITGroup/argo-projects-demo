@@ -65,7 +65,7 @@ affinity: {}
 domain:
 
 image:
-  name: agroprojects/demo-app
+  name: argoprojects/demo-app
   registry: localhost:32000
   version: "1.0"
   native: false
