@@ -1,0 +1,12 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: app-pods
+spec:
+  endpoints:
+    - port: metrics
+      path: /q/metrics
+      scheme: http
+  selector:
+    matchLabels:
+      prometheus.io/scrape-app: "true"
