@@ -5,6 +5,7 @@ metadata:
   name: {{ include "my-app.fullname" . }}-svc
   labels:
     {{- include "my-app.labels" . | nindent 4 }}
+    prometheus.io/scrape-app: "true"
 spec:
   ports:
     - name: http

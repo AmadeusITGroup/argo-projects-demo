@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
   - resources/infra-namespace.yaml
+  - resources/app-pod-monitor.yaml
