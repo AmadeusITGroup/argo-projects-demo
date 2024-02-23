@@ -67,7 +67,7 @@ domain:
 image:
   name: agroprojects/demo-app
   registry: localhost:32000
-  version: 1.0
+  version: "1.0"
   native: false
 
 annotations: { }
