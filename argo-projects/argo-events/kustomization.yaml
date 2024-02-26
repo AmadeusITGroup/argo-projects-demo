@@ -10,23 +10,24 @@ resources:
   - resources/webhook-ingress.yaml
   - resources/role-binding.yaml
 
-- path: patches/replace-namespace.yaml
-  target:
-    kind: Deployment
-    name: controller-manager
-- path: patches/replace-namespace.yaml
-  target:
-    kind: ConfigMap
-    name: argo-events-controller-config
-- path: patches/replace-namespace.yaml
-  target:
-    kind: ServiceAccount
-    name: argo-events-sa
-- path: patches/replace-namespace.yaml
-  target:
-    kind: Role
-    name: argo-events-role
-- path: patches/replace-namespace-RB.yaml
-  target:
-    kind: RoleBinding
-    name: argo-events-role-binding
+patches:
+  - path: patches/replace-namespace.yaml
+    target:
+      kind: Deployment
+      name: controller-manager
+  - path: patches/replace-namespace.yaml
+    target:
+      kind: ConfigMap
+      name: argo-events-controller-config
+  - path: patches/replace-namespace.yaml
+    target:
+      kind: ServiceAccount
+      name: argo-events-sa
+  - path: patches/replace-namespace.yaml
+    target:
+      kind: Role
+      name: argo-events-role
+  - path: patches/replace-namespace-RB.yaml
+    target:
+      kind: RoleBinding
+      name: argo-events-role-binding
