@@ -43,6 +43,7 @@ spec:
                       value: "github-credentials"
                 workflowTemplateRef:
                   name: workflow-template-validate-then-promote
+                  clusterScope: true
           parameters:
             - src:
                 dependencyName: webhook-dep
