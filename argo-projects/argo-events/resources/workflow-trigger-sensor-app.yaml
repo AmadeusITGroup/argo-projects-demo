@@ -25,6 +25,7 @@ spec:
                   scenario: syncSuccess
                   phase: ""
               spec:
+                serviceAccountName: argo
                 ttlStrategy:
                   secondsAfterCompletion: 43200 # Time to live in seconds after workflow is completed / 12h
                 arguments:
