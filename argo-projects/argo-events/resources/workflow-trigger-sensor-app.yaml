@@ -5,7 +5,7 @@ metadata:
   name: webhook-app-promotion
 spec:
   template:
-    serviceAccountName: argo
+    serviceAccountName: argo-events-sa
   dependencies:
     - name: webhook-dep
       eventSourceName: webhook
