@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: webhook-ingress
-  namespace: argo-events
 spec:
   ingressClassName: nginx
   rules:
