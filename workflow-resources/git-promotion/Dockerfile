@@ -1,4 +1,6 @@
-FROM python:3.8.16
+FROM python:3.12-alpine
+
+RUN apk update && apk add git
 
 COPY requirements.txt .
 

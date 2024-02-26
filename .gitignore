@@ -31,3 +31,5 @@ replay_pid*
 **/test-campaign/*.xml
 
 **/__pycache__/
+
+**/secret.yaml
