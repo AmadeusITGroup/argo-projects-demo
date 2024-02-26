@@ -1,6 +1,6 @@
 ---
 apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
+kind: ClusterWorkflowTemplate
 metadata:
   name: workflow-template-run-integration-tests
 spec:
@@ -27,7 +27,7 @@ spec:
           - "{{inputs.parameters.test_target}}"
 ---
 apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
+kind: ClusterWorkflowTemplate
 metadata:
   name: workflow-template-promote-to-next-phase
 spec:
@@ -75,7 +75,7 @@ spec:
                 key: email
 ---
 apiVersion: argoproj.io/v1alpha1
-kind: WorkflowTemplate
+kind: ClusterWorkflowTemplate
 metadata:
   name: workflow-template-validate-then-promote
 spec:
