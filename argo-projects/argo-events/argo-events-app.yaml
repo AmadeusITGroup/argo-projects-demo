@@ -10,7 +10,7 @@ spec:
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argo-events
+    namespace: argo
   syncPolicy:
     automated:
       prune: true
