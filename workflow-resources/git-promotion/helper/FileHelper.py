@@ -28,7 +28,7 @@ class FileHelper(object):
         if os.path.isfile(FileHelper.APP_FILE_PATH + phase + "/values-" + phase + ".yaml"):
             with open(FileHelper.APP_FILE_PATH + phase + "/values-" + phase + ".yaml") as f:
                 values = yaml.load(f, Loader=SafeLoader)
-                if values is not None and 'image' in values and version in values['image']:
+                if values is not None and 'image' in values and 'version' in values['image']:
                     return values['image']['version']
                 else:
                     print("No version found in values file for phase: %s" % phase)
