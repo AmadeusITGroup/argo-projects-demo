@@ -16,3 +16,7 @@ patches:
    target:
      kind: Deployment
      name: argo-server
+ - path: patches/patch-role.yaml
+   target:
+     kind: Role
+     name: argo-role
