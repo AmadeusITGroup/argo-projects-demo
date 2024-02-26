@@ -11,3 +11,7 @@ patches:
     target:
       kind: ConfigMap
       name: argocd-cmd-params-cm
+  - path: patches/notification-cm.yaml
+    target:
+      kind: ConfigMap
+      name: argocd-notifications-cm

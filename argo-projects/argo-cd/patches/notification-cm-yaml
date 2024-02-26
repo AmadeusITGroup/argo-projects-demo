@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+data:
+  service.webhook.sync-webhook: |
+    url: http://webhook-eventsource.argo-events.svc.cluster.local:12000
+    headers:
+      - name: "Content-Type"
+        value: "application/json"
+  template.sync-success-test: |
+    webhook:
+      sync-webhook:
+        method: POST
+        path: /appSyncSuccess
+        body: |
+          {
+            "test_target": "http://app-test-my-app-svc.app-test.svc.cluster.local",
+            "source_phase": "test",
+            "target_phase": "prod",
+            "source_commit": "{{.app.status.operationState.operation.sync.revision}}"
+          }
+  trigger.on-sync-success: |
+    - when: app.status.operationState.phase in ['Succeeded'] and app.status.health.status == 'Healthy' and app.metadata.name == 'app-test'
+      oncePer: app.status.operationState.operation.sync.revision
+      send: [sync-success-test]
