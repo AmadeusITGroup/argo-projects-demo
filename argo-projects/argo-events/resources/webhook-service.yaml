@@ -7,9 +7,9 @@ metadata:
     app.kubernetes.io/part-of: argo-events
 spec:
   ports:
-  - port: 12000
+  - port: 12001
     protocol: TCP
-    targetPort: 12000
+    targetPort: 12001
   selector:
     eventsource-name: webhook
   type: NodePort

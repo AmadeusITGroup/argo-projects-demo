@@ -6,7 +6,7 @@ spec:
   webhook:
     appSyncSuccess:
       # port to run HTTP server on
-      port: "12000"
+      port: "12001"
       # endpoint to listen to
       endpoint: /appSyncSuccess
       # HTTP request method to allow. In this case, only POST requests are accepted
