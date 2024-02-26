@@ -40,7 +40,8 @@ spec:
         parameters:
           - name: git_repo
           - name: source_commit
-          - name: target_folder
+          - name: source_phase
+          - name: target_phase
           - name: git_credentials_secret
       container:
         image: localhost:32000/argoprojects/git-promotion:latest
@@ -52,8 +53,10 @@ spec:
           - "{{inputs.parameters.git_repo}}"
           - "--source-commit"
           - "{{inputs.parameters.source_commit}}"
-          - "--target-folder"
-          - "{{inputs.parameters.target_folder}}"
+          - "--source-phase"
+          - "{{inputs.parameters.source_phase}}"
+          - "--target-phase"
+          - "{{inputs.parameters.target_phase}}"
         env:
           - name: GIT_USER
             valueFrom:
@@ -86,7 +89,8 @@ spec:
       - name: test_docker_command
       - name: git_repo
       - name: source_commit
-      - name: target_folder
+      - name: source_phase
+      - name: target_phase
       - name: git_credentials_secret
   templates:
     - name: validate-then-promote
@@ -103,8 +107,10 @@ spec:
                   value: "{{workflow.parameters.git_repo}}"
                 - name: source_commit
                   value: "{{workflow.parameters.source_commit}}"
-                - name: target_folder
-                  value: "{{workflow.parameters.target_folder}}"
+                - name: source_phase
+                  value: "{{workflow.parameters.source_phase}}"
+                - name: target_phase
+                  value: "{{workflow.parameters.target_phase}}"
                 - name: git_credentials_secret
                   value: "{{workflow.parameters.git_credentials_secret}}"
           - name: run-integration-tests

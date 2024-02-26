@@ -1,5 +1,8 @@
 phase: prod
 
+image:
+  version: "1.0"
+
 rollout:
   enabled: true
   strategy:

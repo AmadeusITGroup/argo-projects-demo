@@ -27,5 +27,7 @@ replay_pid*
 
 .quarkus
 
-test-campaign/*.html
-test-campaign/*.xml
+**/test-campaign/*.html
+**/test-campaign/*.xml
+
+**/__pycache__/

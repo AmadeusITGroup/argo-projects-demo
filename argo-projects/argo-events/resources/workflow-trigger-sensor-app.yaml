@@ -31,13 +31,14 @@ spec:
                   parameters:
                     - name: test_target
                     - name: source_commit
+                    - name: source_phase
                     - name: target_phase
                     - name: test_docker_image
                       value: "argoprojects/test-campaign:latest"
                     - name: test_docker_command
                       value: "./launchTests.sh"
                     - name: git_repo
-                      value: "https://%s:%s@github.com/OpenGuidou/argo-projects-demo.git"
+                      value: "https://github.com/OpenGuidou/argo-projects-demo.git"
                     - name: git_credentials_secret
                       value: "github-credentials"
                 workflowTemplateRef:
@@ -53,15 +54,19 @@ spec:
               dest: spec.arguments.parameters.1.value
             - src:
                 dependencyName: webhook-dep
-                dataTemplate: "{{ .Input.body.target_phase }}"
+                dataTemplate: "{{ .Input.body.source_phase }}"
               dest: spec.arguments.parameters.2.value
             - src:
                 dependencyName: webhook-dep
-                dataTemplate: "{{ .Input.body.origin_phase }}-"
+                dataTemplate: "{{ .Input.body.target_phase }}"
+              dest: spec.arguments.parameters.3.value
+            - src:
+                dependencyName: webhook-dep
+                dataTemplate: "{{ .Input.body.source_phase }}"
               dest: metadata.generateName
               operation: append
             - src:
                 dependencyName: webhook-dep
-                dataTemplate: "{{ .Input.body.origin_phase }}"
+                dataTemplate: "{{ .Input.body.source_phase }}"
               dest: metadata.labels.phase
               operation: append
