@@ -4,7 +4,7 @@ metadata:
   name: argocd-notifications-cm
 data:
   service.webhook.sync-webhook: |
-    url: http://webhook-eventsource.argo-events.svc.cluster.local:12000
+    url: http://webhook-eventsource.argo.svc.cluster.local:12000
     headers:
       - name: "Content-Type"
         value: "application/json"
