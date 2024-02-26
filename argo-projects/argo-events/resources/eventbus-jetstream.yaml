@@ -6,7 +6,7 @@ metadata:
 spec:
   jetstream:
     version: 2.9.16
-    replicas : 1
+    replicas : 3
     containerTemplate:
       resources:
         limits:
