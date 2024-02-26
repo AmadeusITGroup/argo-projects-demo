@@ -8,3 +8,4 @@ resources:
   - resources/sync-success-eventsource.yaml
   - resources/webhook-service.yaml
   - resources/workflow-trigger-sensor-app.yaml
+  - resources/webhook-ingress.yaml
