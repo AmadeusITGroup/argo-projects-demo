@@ -5,7 +5,7 @@ metadata:
   name: default
 spec:
   jetstream:
-    version: 2.8.2
+    version: 2.10.11
     replicas : 3
     containerTemplate:
       resources:
