@@ -44,7 +44,7 @@ spec:
           - name: target_phase
           - name: git_credentials_secret
       container:
-        image: localhost:32000/argoprojects/git-promotion:latest
+        image: localhost:32000/argo-projects/git-promotion:latest
         command:
           - "python3"
           - "promote.py"
