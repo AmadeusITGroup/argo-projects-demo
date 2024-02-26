@@ -34,7 +34,7 @@ spec:
                     - name: source_phase
                     - name: target_phase
                     - name: test_docker_image
-                      value: "argoprojects/test-campaign:latest"
+                      value: "argo-projects/test-campaign:latest"
                     - name: test_docker_command
                       value: "./launchTests.sh"
                     - name: git_repo
