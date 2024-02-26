@@ -9,3 +9,4 @@ resources:
   - resources/webhook-service.yaml
   - resources/workflow-trigger-sensor-app.yaml
   - resources/webhook-ingress.yaml
+  - resources/role-binding.yaml

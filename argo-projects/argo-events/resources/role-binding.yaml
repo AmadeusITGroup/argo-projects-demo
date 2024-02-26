@@ -1,0 +1,15 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app.kubernetes.io/instance: argo-events
+  name: argo-workflow-to-events-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argo-cluster-role
+subjects:
+- kind: ServiceAccount
+  name: argo-events-sa
+  namespace: argo-events
