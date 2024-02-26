@@ -1,6 +1,14 @@
-- op: add
+- op: replace
   path: /rules
   value:
+    - verbs:
+        - create
+        - get
+        - update
+      apiGroups:
+        - coordination.k8s.io
+      resources:
+        - leases
     - verbs:
         - create
         - get
