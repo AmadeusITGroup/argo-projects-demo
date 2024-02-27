@@ -78,3 +78,11 @@ In case the ArgoCD UI doesn't load (too many redirects), you might need to resta
 ```bash
 kubectl rollout restart deployment argocd-server -n argocd
 ```
+
+If some pods are in CrashLoop state with the error `Too many open files`, try:
+
+```bash
+sudo sysctl fs.inotify.max_user_instances=1280
+sudo sysctl fs.inotify.max_user_watches=655360
+```
+Ref: https://github.com/kubeflow/manifests/issues/2087
