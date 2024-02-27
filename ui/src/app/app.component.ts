@@ -140,7 +140,7 @@ export class AppComponent {
   async startFetchingPets() {
 
     while (true) {
-      await this.sleep(1000).then(() => { 
+      await this.sleep(250).then(() => { 
         if (this.buttonState.active) {
  
           console.log('Fetching pets!');
