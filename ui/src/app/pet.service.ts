@@ -18,11 +18,7 @@ export class PetService {
 
     getPet(): Observable<String> {
         return this.http.get(this.petUrl, {
-            headers: new HttpHeaders({
-                'Accept': 'text/html, application/xhtml+xml, */*',
-                'Content-Type': 'application/x-www-form-urlencoded'
-              }),
-              responseType: 'text'
-            });
+            responseType: 'text'
+        });
     }
 }
