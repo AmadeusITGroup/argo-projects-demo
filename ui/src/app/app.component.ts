@@ -15,7 +15,6 @@ import {
 } from "ng-apexcharts";
 
 import { PetService } from './pet.service';
-import { animate } from '@angular/animations';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
