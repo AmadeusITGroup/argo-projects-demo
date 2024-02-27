@@ -143,7 +143,6 @@ export class AppComponent {
       await this.sleep(250).then(() => { 
         if (this.buttonState.active) {
  
-          console.log('Fetching pets!');
           this.petService.getPet().subscribe({
 
             next: (pet) => {
