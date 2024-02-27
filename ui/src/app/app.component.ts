@@ -15,6 +15,7 @@ import {
 } from "ng-apexcharts";
 
 import { PetService } from './pet.service';
+import { animate } from '@angular/animations';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -62,6 +63,9 @@ export class AppComponent {
         type: "bar",
         toolbar: {
           show: false
+        },
+        animations: {
+          enabled: false
         }
       },
       plotOptions: {
@@ -144,11 +148,11 @@ export class AppComponent {
 
             next: (pet) => {
               switch(pet) { 
-                case "Dog": { 
+                case "Cat": { 
                   this.petStore[0] += 1;
                   break; 
                 }
-                case "Cat": { 
+                case "Dog": { 
                   this.petStore[1] += 1;
                   break; 
                 }
@@ -161,16 +165,18 @@ export class AppComponent {
                   break; 
                 } 
               } 
-              this.chart.updateOptions({
-                  series: [
+              this.chart.updateSeries(
+                [
                     {
                       name: "Number",
                       data: this.petStore
                     }
-                  ]
-                });
+                ],
+                true
+              );
             },
-            error: () => {
+            error: (e) => {
+              console.error(e)
               this.petStore[3] += 1;
             }     
           })
