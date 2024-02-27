@@ -19,3 +19,26 @@ spec:
       targetPort: 9000
   selector:
     {{- include "my-app.selectorLabels" . | nindent 4 }}
+{{- if .Values.rollout.enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "my-app.fullname" . }}-canary-svc
+  labels:
+    {{- include "my-app.labels" . | nindent 4 }}
+    prometheus.io/scrape-app: "true"
+  annotations:
+    prometheus.io/port: "metrics"
+    prometheus.io/scrape: "true"
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+    - name: metrics
+      port: 9000
+      targetPort: 9000
+  selector:
+    {{- include "my-app.selectorLabels" . | nindent 4 }}
+{{ end }}
