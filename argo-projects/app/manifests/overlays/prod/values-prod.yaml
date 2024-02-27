@@ -1,5 +1,5 @@
 image:
-  version: '1.0'
+  version: '3.0'
 phase: prod
 rollout:
   enabled: true
@@ -7,9 +7,6 @@ rollout:
     canary:
       canaryService: app-prod-my-app-canary-svc
       stableService: app-prod-my-app-svc
-      trafficRouting:
-        nginx:
-          stableIngress: app-prod-my-app-ingress
       steps:
       - setWeight: 20
       - pause:
@@ -23,3 +20,6 @@ rollout:
       - setWeight: 80
       - pause:
           duration: 20s
+      trafficRouting:
+        nginx:
+          stableIngress: app-prod-my-app-ingress
