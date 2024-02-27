@@ -35,20 +35,20 @@ class FileHelper(object):
         else:
             print("Could not find values file for phase: %s" % phase)
     
-    def update_app_version(self, version, phase):
+    def update_app_version(self, git_repo, version, phase):
 
         print("Updating app version for phase %s" % phase)
 
         # Update to latest
-        git_repo.checkout("main")
-        git_repo.pull()
+        git_repo.git.checkout("main")
+        git_repo.git.pull()
 
         if os.path.isfile(FileHelper.APP_FILE_PATH + phase + "/values-" + phase + ".yaml"):
             with open(FileHelper.APP_FILE_PATH + phase + "/values-" + phase + ".yaml") as f:
                 values = yaml.load(f, Loader=SafeLoader)
-                if values is not None and 'image' in values and version in values['image']:
+                if values is not None and 'image' in values and 'version' in values['image']:
                     values['image']['version'] = version
-                    with open(APP_FILE_PATH + phase + "/values-" + phase + ".yaml", 'w') as f:
+                    with open(FileHelper.APP_FILE_PATH + phase + "/values-" + phase + ".yaml", 'w') as f:
                         yaml.dump(values, f)
                 else:
                     print("No version found in values file for phase: %s" % phase)

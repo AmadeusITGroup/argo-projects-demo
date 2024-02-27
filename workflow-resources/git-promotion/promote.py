@@ -35,11 +35,11 @@ def main():
 
             if source_version != target_version:
                 print("Changes detected")
-                FileHelper().update_app_version(source_version, target_phase)
+                FileHelper().update_app_version(repo, source_version, target_phase)
                 
                 if not arguments.dry_run:
                     print("Commit and Push Changes")
-                    repo.git.commit('-am', "(chore) - Automated app promotion")
+                    repo.git.commit('-am', "(feat) - Automated app promotion")
                     repo.git.push()
 
             else:
