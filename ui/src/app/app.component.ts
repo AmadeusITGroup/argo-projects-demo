@@ -58,7 +58,7 @@ export class AppComponent {
       ],
       chart: {
         height: 450,
-        width: "50%",
+        width: "100%",
         type: "bar",
         toolbar: {
           show: false

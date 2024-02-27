@@ -11,11 +11,22 @@ header {
   padding: var(--content-padding);
 }
 
+.d-flex {
+  display: flex;
+  justify-content: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.d-block {
+  display: block;
+}
+
 .chart {
   margin-top: 30px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  width: 550px;
 }
 
 h1 {

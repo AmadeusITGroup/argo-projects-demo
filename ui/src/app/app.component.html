@@ -1,18 +1,23 @@
-<h1>Pet store test App </h1>
+<h1>Pet store test App</h1>
 
-<div class="chart">
-    <apx-chart #chart
-    [series]="chartOptions.series!"
-    [chart]="chartOptions.chart!"
-    [dataLabels]="chartOptions.dataLabels!"
-    [plotOptions]="chartOptions.plotOptions!"
-    [yaxis]="chartOptions.yaxis!"
-    [xaxis]="chartOptions.xaxis!"
-    [fill]="chartOptions.fill!"
-    [title]="chartOptions.title!"
+<div class="d-flex w-100">
+  <div class="chart">
+    <apx-chart
+      #chart
+      [series]="chartOptions.series!"
+      [chart]="chartOptions.chart!"
+      [dataLabels]="chartOptions.dataLabels!"
+      [plotOptions]="chartOptions.plotOptions!"
+      [yaxis]="chartOptions.yaxis!"
+      [xaxis]="chartOptions.xaxis!"
+      [fill]="chartOptions.fill!"
+      [title]="chartOptions.title!"
     ></apx-chart>
+  </div>
 </div>
 
 <div>
-    <button class="primary submit-button" type="button"(click)="switchTraffic()">{{buttonState.label}}</button>
+  <button class="primary submit-button" type="button" (click)="switchTraffic()">
+    {{ buttonState.label }}
+  </button>
 </div>
