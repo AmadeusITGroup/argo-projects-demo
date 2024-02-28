@@ -18,7 +18,6 @@ rollout:
         templates:
         - clusterScope: true
           templateName: http-server-success-rate-comparison
-          requiredForCompletion: true
         startingStep: 2
       canaryService: app-prod-my-app-canary-svc
       stableService: app-prod-my-app-svc
