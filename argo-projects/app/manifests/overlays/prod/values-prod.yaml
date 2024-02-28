@@ -1,5 +1,5 @@
 image:
-  version: '1.0'
+  version: '3.0'
 phase: prod
 rollout:
   enabled: true
@@ -15,10 +15,10 @@ rollout:
         - name: latest-hash
           valueFrom:
             podTemplateHashValue: Latest
+        startingStep: 2
         templates:
         - clusterScope: true
           templateName: http-server-success-rate-comparison
-        startingStep: 2
       canaryService: app-prod-my-app-canary-svc
       stableService: app-prod-my-app-svc
       steps:
