@@ -18,21 +18,23 @@ rollout:
         templates:
         - clusterScope: true
           templateName: http-server-success-rate-comparison
+          requiredForCompletion: true
+        startingStep: 2
       canaryService: app-prod-my-app-canary-svc
       stableService: app-prod-my-app-svc
       steps:
       - setWeight: 20
       - pause:
-          duration: 10s
+          duration: 2m
       - setWeight: 40
       - pause:
-          duration: 40s
+          duration: 2m
       - setWeight: 60
       - pause:
-          duration: 20s
+          duration: 2m
       - setWeight: 80
       - pause:
-          duration: 20s
+          duration: 2m
       trafficRouting:
         nginx:
           stableIngress: app-prod-my-app-ingress
