@@ -13,7 +13,7 @@ spec:
     # NOTE: prometheus queries return results in the form of a vector.
     # So it is common to access the index 0 of the returned array to obtain the value
     successCondition: len(result) == 0 || isNaN(result[0]) || result[0] < 0.1
-    failureLimit: 0
+    failureLimit: 1
     provider:
       prometheus:
         address: http://prometheus-operated.infra.svc.cluster.local:9090
@@ -21,7 +21,7 @@ spec:
           (
             sum(
               irate(
-                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.stable-hash}}.*",outcome~="SUCCESS"}[1m]
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.stable-hash}}.*",outcome=~"SUCCESS"}[1m]
               )
             ) 
             /
@@ -34,7 +34,7 @@ spec:
           (
             sum(
               irate(
-                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.latest-hash}}.*",outcome~="SUCCESS"}[1m]
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.latest-hash}}.*",outcome=~"SUCCESS"}[1m]
               )
             ) 
             /
