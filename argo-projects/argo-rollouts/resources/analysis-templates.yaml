@@ -23,26 +23,26 @@ spec:
           (
             sum(
               irate(
-                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.stable-hash}}.*",outcome~="SUCCESS"}[2m]
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.stable-hash}}.*",outcome~="SUCCESS"}[2m]
               )
             ) 
             /
             sum(
               irate(
-                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.stable-hash}}.*"}[2m]
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.stable-hash}}.*"}[2m]
               )
             )
           ) -
           (
             sum(
               irate(
-                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.latest-hash}}.*",outcome~="SUCCESS"}[2m]
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.latest-hash}}.*",outcome~="SUCCESS"}[2m]
               )
             ) 
             /
             sum(
               irate(
-                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.latest-hash}}.*"}[2m]
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.container-name}}-rollout-{{args.latest-hash}}.*"}[2m]
               )
             )
           )
