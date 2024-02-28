@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ClusterAnalysisTemplate
+metadata:
+  name: http-server-success-rate-comparison
+spec:
+  args:
+  - name: container-name
+  - name: stable-hash
+  - name: latest-hash
+  metrics:
+  - name: success-rate
+    initialDelay: 2m
+    count: 2
+    interval: 2m
+    # NOTE: prometheus queries return results in the form of a vector.
+    # So it is common to access the index 0 of the returned array to obtain the value
+    successCondition: len(result) == 0 || isNaN(result[0]) || result[0] < 0.1
+    failureLimit: 0
+    provider:
+      prometheus:
+        address: http://prometheus-operated.infra.svc.cluster.local:9090
+        query: |
+          (
+            sum(
+              irate(
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.stable-hash}}.*",outcome~="SUCCESS"}[2m]
+              )
+            ) 
+            /
+            sum(
+              irate(
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.stable-hash}}.*"}[2m]
+              )
+            )
+          ) -
+          (
+            sum(
+              irate(
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.latest-hash}}.*",outcome~="SUCCESS"}[2m]
+              )
+            ) 
+            /
+            sum(
+              irate(
+                http_server_requests_seconds_count{container="{{args.container-name}}",pod=~"{{args.app-name}}-rollout-{{args.latest-hash}}.*"}[2m]
+              )
+            )
+          )
+          

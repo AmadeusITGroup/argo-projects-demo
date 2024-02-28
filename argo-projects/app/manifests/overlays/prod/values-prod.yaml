@@ -7,6 +7,19 @@ rollout:
     canary:
       canaryService: app-prod-my-app-canary-svc
       stableService: app-prod-my-app-svc
+      analysis:
+        templates:
+          - templateName: http-server-success-rate-comparison
+            clusterScope: true
+        args:
+          - name: container-name
+            value: app-prod-my-app
+          - name: stable-hash
+            valueFrom:
+              podTemplateHashValue: Stable
+          - name: latest-hash
+            valueFrom:
+              podTemplateHashValue: Latest
       steps:
       - setWeight: 20
       - pause:

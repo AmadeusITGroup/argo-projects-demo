@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - resources/argo-rollouts-namespace.yaml
   - https://github.com/argoproj/argo-rollouts/releases/latest/download/install.yaml
+  - resources/analysis-templates.yaml
