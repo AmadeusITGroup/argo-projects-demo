@@ -7,6 +7,7 @@ spec:
     - port: metrics
       path: /q/metrics
       scheme: http
+      interval: 10s
   namespaceSelector:
     matchNames:
       - app-test

@@ -12,8 +12,8 @@ spec:
     interval: 1m
     # NOTE: prometheus queries return results in the form of a vector.
     # So it is common to access the index 0 of the returned array to obtain the value
-    successCondition: len(result) == 0 || isNaN(result[0]) || result[0] < 0.1
-    failureLimit: 1
+    successCondition: len(result) == 0 || isNaN(result[0]) || result[0] == 0
+    failureLimit: 0
     provider:
       prometheus:
         address: http://prometheus-operated.infra.svc.cluster.local:9090
