@@ -15,7 +15,6 @@ rollout:
         - name: latest-hash
           valueFrom:
             podTemplateHashValue: Latest
-        startingStep: 2
         templates:
         - clusterScope: true
           templateName: http-server-success-rate-comparison
@@ -24,16 +23,16 @@ rollout:
       steps:
       - setWeight: 20
       - pause:
-          duration: 2m
+          duration: 30s
       - setWeight: 40
       - pause:
-          duration: 2m
+          duration: 30s
       - setWeight: 60
       - pause:
-          duration: 2m
+          duration: 30s
       - setWeight: 80
       - pause:
-          duration: 2m
+          duration: 30s
       trafficRouting:
         nginx:
           stableIngress: app-prod-my-app-ingress

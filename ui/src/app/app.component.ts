@@ -139,7 +139,7 @@ export class AppComponent {
   async startFetchingPets() {
 
     while (true) {
-      await this.sleep(250).then(() => { 
+      await this.sleep(100).then(() => { 
         if (this.buttonState.active) {
  
           this.petService.getPet().subscribe({
