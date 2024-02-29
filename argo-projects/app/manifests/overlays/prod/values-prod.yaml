@@ -1,11 +1,10 @@
 image:
-  version: '1.0'
+  version: '4.0'
 phase: prod
 rollout:
   enabled: true
   strategy:
     canary:
-      scaleDownDelaySeconds: 3
       analysis:
         args:
         - name: container-name
@@ -20,6 +19,7 @@ rollout:
         - clusterScope: true
           templateName: http-server-success-rate-comparison
       canaryService: app-prod-my-app-canary-svc
+      scaleDownDelaySeconds: 3
       stableService: app-prod-my-app-svc
       steps:
       - setWeight: 20
