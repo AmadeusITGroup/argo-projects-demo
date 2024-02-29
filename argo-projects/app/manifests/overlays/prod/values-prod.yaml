@@ -5,6 +5,7 @@ rollout:
   enabled: true
   strategy:
     canary:
+      scaleDownDelaySeconds: 3s
       analysis:
         args:
         - name: container-name
