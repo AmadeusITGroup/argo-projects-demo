@@ -20,7 +20,7 @@ In your kubernetes cluster, we'll start by installing Argo CD.
 
 Once installed, we'll use Argo CD to deploy absolutely everything in the cluster. It will even watch and patch itself !
 
-// insert image
+![image](./assets/cluster-view.png)
 
 Using Argo CD, we will deploy some infrastructure components:
 * [Ingress Nginx controller](https://github.com/kubernetes/ingress-nginx): to be able to expose ingresses to the Argo CD and Argo Workflows interfaces, and also act as a load balancer for our canary tests using Argo Rollouts
@@ -28,10 +28,12 @@ Using Argo CD, we will deploy some infrastructure components:
 * [Prometheus stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack): to gather microservice's prometheus metrics and use them as analysis in our progressive rollout
 
 It will also take care of installing the Argo Projects:
-* Argo CD, patching itself !
-* Argo Workflow
-* Argo Events
-* Argo Rollouts
+* [Argo CD](https://argo-cd.readthedocs.io/en/stable/), patching itself !
+* [Argo Workflows](https://argo-workflows.readthedocs.io/en/latest/)
+* [Argo Events](https://argoproj.github.io/argo-events/)
+* [Argo Rollouts](https://argo-rollouts.readthedocs.io/en/stable/)
+
+And a PetStore demo application in two phases: test and production.
 
 ## Components installation
 
@@ -61,6 +63,8 @@ You can use the following parameters as reference:
 You should now have all components deployed in your cluster:
 
 ![image](./assets/ArgoCD-Apps-state.png)
+
+* /!\ Do not mind the app namespaces in red, we'll push the application image in the step just after.*
 
 **This is it**. This was the last manual action you had to perform on the platform !
 
