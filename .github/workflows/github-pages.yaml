@@ -11,16 +11,16 @@ on:
       - 'mkdocs.yml'
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: 'pages'
+  cancel-in-progress: false
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
   buildAndDeploy:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     # This environment is required!
     environment:
