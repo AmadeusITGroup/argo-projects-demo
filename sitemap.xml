@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://openguidou.github.io/argo-projects-demo/</loc>
+         <lastmod>2024-03-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://openguidou.github.io/argo-projects-demo/HOW_TO_RUN_THE_DEMO/</loc>
+         <lastmod>2024-03-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://openguidou.github.io/argo-projects-demo/PLATFORM_INSTALLATION/</loc>
+         <lastmod>2024-03-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://openguidou.github.io/argo-projects-demo/PROGRESSIVE_ROLLOUT/</loc>
+         <lastmod>2024-03-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://openguidou.github.io/argo-projects-demo/PROMOTION_WORKFLOW/</loc>
+         <lastmod>2024-03-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
