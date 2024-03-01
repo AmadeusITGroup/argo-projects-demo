@@ -7,6 +7,7 @@ To be able to install the platform and its components, you need first a kubernet
 You can use [k3d](https://k3d.io/), [minikube](https://minikube.sigs.k8s.io/docs/start/) or [kind](https://kind.sigs.k8s.io/docs/user/quick-start/) for example.
 
 You will also need:
+
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * [Argo CD CLI](https://argo-cd.readthedocs.io/en/stable/getting_started/#2-download-argo-cd-cli)
 

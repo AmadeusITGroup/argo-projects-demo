@@ -1,0 +1,24 @@
+site_name: A Gitops continuous deployment and delivery demonstrator using the Argo projects
+site_url: https://openguidou.github.io/argo-projects-demo/
+repo_url: https://github.com/OpenGuidou/argo-projects-demo
+docs_dir: docs
+nav:
+  - Home: README.md
+  - Platorm Installation: PLATFORM_INSTALLATION.md
+  - Promotion Workflow: PROMOTION_WORKFLOW.md
+  - Progressive Rollout: PROGRESSIVE_ROLLOUT.md
+  - Run the demo: HOW_TO_RUN_THE_DEMO.md
+theme:
+  font:
+    text: Work Sans
+  name: material
+  palette:
+  - primary: teal
+    scheme: default
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Switch to dark mode
+  - scheme: slate
+    toggle:
+      icon: material/toggle-switch
+      name: Switch to light mode
