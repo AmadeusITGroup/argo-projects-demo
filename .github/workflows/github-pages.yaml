@@ -19,6 +19,8 @@ permissions:
 
 jobs:
   buildAndDeploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     # This environment is required!
     environment:
