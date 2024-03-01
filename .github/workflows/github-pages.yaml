@@ -1,8 +1,15 @@
 name: Deploy-Docs 
 on:
+  workflow_dispatch: # Allow manual trigger
   push:
+    tags-ignore:
+      - '**' # Ignore any tags here
     branches:
-      - main
+      - main    
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -11,25 +18,31 @@ permissions:
   contents: read
 
 jobs:
-  deploy:
-    permissions:
-      contents: write  # for peaceiris/actions-gh-pages to push pages branch
+  buildAndDeploy:
     runs-on: ubuntu-latest
+    # This environment is required!
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.pages_url }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v5
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Setup Python 3.x
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
-      - uses: actions/cache@v4
+          python_version: '3.x' # Uses latest 3.x version.
+      - name: Install dependencies
+        # Alternatively: pip install mkdocs
+        run: pip install -r requirements.txt
+      - name: Build Docs
+        run: mkdocs build
+      - name: Configure GitHub Pages
+        # I have no idea if this actually needed...
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
-      - run: pip install mkdocs-material 
-      - run: mkdocs gh-deploy --force
+          path: 'site/' # MkDocs builds to site/ by default
+      - name: Deploy to GitHub Pages
+        id: deployment # This is required for environment
+        uses: actions/deploy-pages@v2
