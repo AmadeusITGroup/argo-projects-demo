@@ -20,25 +20,25 @@ Argo CD delivery tool for Kubernetes workloads implementing the [GitOps principl
 
 It's able to, declaratively, read definitions from a Git repository to deploy resources in many different target Kubernetes clusters, offering levels of abstraction allowing to keep the declarations as DRY as possible.
 
-Documentation here: https://argo-cd.readthedocs.io/en/stable/
+Documentation here: [https://argo-cd.readthedocs.io/en/stable/](https://argo-cd.readthedocs.io/en/stable/)
 
 ### Argo Workflows
 
 Argo Workflows is a workflow engine, allowing to define and orchestrate jobs on Kubernetes.
 
-Documentation here: https://argo-workflows.readthedocs.io/en/latest/
+Documentation here: [https://argo-workflows.readthedocs.io/en/latest/](https://argo-workflows.readthedocs.io/en/latest/)
 
 ### Argo Events
 
 Argo Events is an eventing platform allowing to connect various event sources and associate them to trigger actions.
 
-Documentation here: https://argoproj.github.io/argo-events/
+Documentation here: [https://argoproj.github.io/argo-events/](https://argoproj.github.io/argo-events/)
 
 ### Argo Rollouts
 
 Argo Rollouts provides extensions to the basic Kubernetes rollouts, allowing to implement complex progressive rollouts mechanisms like canary or blue/green. It includes plugins to perform various analysis to detect any issue happening during the deployment.
 
-Documentation here: https://argo-rollouts.readthedocs.io/en/stable/
+Documentation here: [https://argo-rollouts.readthedocs.io/en/stable/](https://argo-rollouts.readthedocs.io/en/stable/)
 
 ## The project structure
 
