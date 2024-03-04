@@ -6,7 +6,39 @@
 
 ## Description
 
-A brief description of the project goes here.
+
+
+This repository aims at presenting you a way to implement a **complete, automated and GitOps continuous deployment and delivery platform** combining together cloud-native opensource solutions: the Argo projects.
+
+It will show you how you can **easily deploy your application** across different phases (test and production), **automatically validate and promote** an application version from one phase to the other, **run canary testing** in production to detect any defect and **automatically rollback** to the stable application version if that happens.
+
+Let's meet the actors:
+
+### Argo CD
+
+Argo CD delivery tool for Kubernetes workloads implementing the [GitOps principles](https://opengitops.dev/#principles).
+
+It's able to, declaratively, read definitions from a Git repository to deploy resources in many different target Kubernetes clusters, offering levels of abstraction allowing to keep the declarations as DRY as possible.
+
+Documentation here: https://argo-cd.readthedocs.io/en/stable/
+
+### Argo Workflows
+
+Argo Workflows is a workflow engine, allowing to define and orchestrate jobs on Kubernetes.
+
+Documentation here: https://argo-workflows.readthedocs.io/en/latest/
+
+### Argo Events
+
+Argo Events is an eventing platform allowing to connect various event sources and associate them to trigger actions.
+
+Documentation here: https://argoproj.github.io/argo-events/
+
+### Argo Rollouts
+
+Argo Rollouts provides extensions to the basic Kubernetes rollouts, allowing to implement complex progressive rollouts mechanisms like canary or blue/green. It includes plugins to perform various analysis to detect any issue happening during the deployment.
+
+Documentation here: https://argo-rollouts.readthedocs.io/en/stable/
 
 ## The project structure
 

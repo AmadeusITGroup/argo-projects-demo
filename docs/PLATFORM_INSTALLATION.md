@@ -20,6 +20,7 @@ To compile and deploy the demo application, you will need:
 You can install both using [SDKMAN!](https://sdkman.io/).
 
 To run the production web page, you will need:
+
 * npm (~10.1.0): you can install using https://github.com/nvm-sh/nvm 
 * angular-cli (~17.1.3): 
     ```bash
