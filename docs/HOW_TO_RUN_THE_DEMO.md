@@ -84,7 +84,7 @@ To open it, go to the [ui folder](https://github.com/OpenGuidou/argo-projects-de
 npm i && ng serve
 ```
 
-You should be able to access it at: http://localhost:4200/
+You should be able to access it at: [http://localhost:4200/](http://localhost:4200/)
 
 ![image](./assets/pet-store-app.png)
 
