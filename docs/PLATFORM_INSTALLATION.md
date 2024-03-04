@@ -23,10 +23,9 @@ To run the production web page, you will need:
 
 * npm (~10.1.0): you can install using https://github.com/nvm-sh/nvm 
 * angular-cli (~17.1.3): 
-    
-    ```bash
-    npm install -g @angular/cli
-    ```
+```bash
+npm install -g @angular/cli
+```
 
 
 ## Platform components
