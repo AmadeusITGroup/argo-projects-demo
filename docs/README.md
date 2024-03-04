@@ -10,21 +10,25 @@ A brief description of the project goes here.
 
 ## The project structure
 
-The [`argo-projects`](../argo-projects/) folder contains all the manifests for the platform: the Argo CD application/applicationsets, the kubernetes resources for the Argo controllers, the infrastructure and the applications
+The [`argo-projects`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/argo-projects) folder contains all the manifests for the platform: the Argo CD application/applicationsets, the kubernetes resources for the Argo controllers, the infrastructure and the applications. For more informations, read the [platform manifests documentation](PLATFORM_MANIFESTS.md).
 
-The [`demo-app`](../demo-app/) folder contains the source code for the PetStore demo application, that we are using to demonstrate the deployment, promotion workflow and progressive rollouts mechanisms.
+The [`demo-app`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/demo-app/) folder contains the source code for the PetStore demo application, that we are using to demonstrate the deployment, promotion workflow and progressive rollouts mechanisms.
 
-The [`ui`](../ui/) folder contains the source code for the simple web page allowing to demonstrate the progressive rollout on the production version of the application.
+The [`ui`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/ui/) folder contains the source code for the simple web page allowing to demonstrate the progressive rollout on the production version of the application.
 
-The [`scripts`](../scripts/) folder contains a few usefull scripts that you will use in the next chapters.
+The [`scripts`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/scripts/) folder contains a few usefull scripts that you will use in the next chapters.
 
-The [`workflow-resources`](../workflow-resources/) contains the source code for the steps run during the promotion workflow.
+The [`workflow-resources`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/workflow-resources/) contains the source code for the steps run during the promotion workflow.
 
-The [`docs`](.) folder contains the project documentation.
+The [`docs`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/docs/) folder contains the project documentation.
 
 ## Installation
 
 To setup this demonstrator, feel free to **fork this repository** and follow the [installation instructions](PLATFORM_INSTALLATION.md).
+
+## Understand the platform manifests
+
+See [the platform manifests documentation](PLATFORM_MANIFESTS.md).
 
 ## Promotion workflow
 

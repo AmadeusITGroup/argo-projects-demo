@@ -5,6 +5,7 @@ docs_dir: docs
 nav:
   - Home: README.md
   - Platorm Installation: PLATFORM_INSTALLATION.md
+  - Platform Manifests: PLATFORM_MANIFESTS.md
   - Promotion Workflow: PROMOTION_WORKFLOW.md
   - Progressive Rollout: PROGRESSIVE_ROLLOUT.md
   - Run the demo: HOW_TO_RUN_THE_DEMO.md
@@ -22,3 +23,5 @@ theme:
     toggle:
       icon: material/toggle-switch
       name: Switch to light mode
+plugins:
+   - glightbox
