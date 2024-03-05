@@ -360,3 +360,14 @@ We trigger the notification only if:
 * The synchronization is successful (`Succeeded`)
 * The application is `Healthy`
 
+Now we only need to activate the notification itself. We can do it for all Argo CD `Applications` or for a subset.
+
+We'll activate it only for our PetStore `Applications` using an annotation.
+
+```yaml
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-success.sync-webhook: "" 
+```
+
+Source [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/app-appset.yaml#L16).

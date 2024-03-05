@@ -141,7 +141,7 @@ We can go in Argo Rollouts dashboard to follow the canary process:
 kubectl argo rollouts dashboard
 ```
 
-Then browse at: http://localhost:3100/rollouts/rollout/app-prod/app-prod-my-app-rollout 
+Then browse at: [http://localhost:3100/rollouts/rollout/app-prod/app-prod-my-app-rollout](http://localhost:3100/rollouts/rollout/app-prod/app-prod-my-app-rollout) 
 
 In the UI, we can notice dogs, cats and birds now being returned:
 
