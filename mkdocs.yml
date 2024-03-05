@@ -1,4 +1,4 @@
-site_name: A Gitops continuous deployment and delivery demonstrator using the Argo projects
+site_name: A GitOps continuous deployment and delivery demonstrator using the Argo projects
 site_url: https://openguidou.github.io/argo-projects-demo/
 repo_url: https://github.com/OpenGuidou/argo-projects-demo
 docs_dir: docs
