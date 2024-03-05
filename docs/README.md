@@ -1,6 +1,6 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-# A Gitops continuous deployment and delivery demonstrator using the Argo projects
+# A GitOps continuous deployment and delivery demonstrator using the Argo projects
 
 ![image](./assets/gitops-logo.png) ![image](./assets/argo-icon-color.png)
 
