@@ -39,7 +39,7 @@ spec:
                     - name: test_docker_command
                       value: "./launchTests.sh"
                     - name: git_repo
-                      value: "https://github.com/OpenGuidou/argo-projects-demo.git"
+                      value: "https://github.com/AmadeusITGroup/argo-projects-demo.git"
                     - name: git_credentials_secret
                       value: "github-credentials"
                 workflowTemplateRef:

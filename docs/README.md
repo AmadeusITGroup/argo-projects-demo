@@ -42,17 +42,17 @@ Documentation here: [https://argo-rollouts.readthedocs.io/en/stable/](https://ar
 
 ## The project structure
 
-The [`argo-projects`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/argo-projects) folder contains all the manifests for the platform: the Argo CD application/applicationsets, the kubernetes resources for the Argo controllers, the infrastructure and the applications. For more informations, read the [platform manifests documentation](PLATFORM_MANIFESTS.md).
+The [`argo-projects`](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/argo-projects) folder contains all the manifests for the platform: the Argo CD application/applicationsets, the kubernetes resources for the Argo controllers, the infrastructure and the applications. For more informations, read the [platform manifests documentation](PLATFORM_MANIFESTS.md).
 
-The [`demo-app`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/demo-app/) folder contains the source code for the PetStore demo application, that we are using to demonstrate the deployment, promotion workflow and progressive rollouts mechanisms.
+The [`demo-app`](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/demo-app/) folder contains the source code for the PetStore demo application, that we are using to demonstrate the deployment, promotion workflow and progressive rollouts mechanisms.
 
-The [`ui`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/ui/) folder contains the source code for the simple web page allowing to demonstrate the progressive rollout on the production version of the application.
+The [`ui`](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/ui/) folder contains the source code for the simple web page allowing to demonstrate the progressive rollout on the production version of the application.
 
-The [`scripts`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/scripts/) folder contains a few usefull scripts that you will use in the next chapters.
+The [`scripts`](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/scripts/) folder contains a few usefull scripts that you will use in the next chapters.
 
-The [`workflow-resources`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/workflow-resources/) contains the source code for the steps run during the promotion workflow.
+The [`workflow-resources`](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/workflow-resources/) contains the source code for the steps run during the promotion workflow.
 
-The [`docs`](https://github.com/OpenGuidou/argo-projects-demo/tree/main/docs/) folder contains the project documentation.
+The [`docs`](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/docs/) folder contains the project documentation.
 
 ## Installation
 

@@ -4,7 +4,7 @@
 
 We will run a full continuous deployment and delivery on our demo application: the PetStore 🐶.
 
-This application is a simple Quarkus app located in the [demo-app](https://github.com/OpenGuidou/argo-projects-demo/tree/main/demo-app) folder.
+This application is a simple Quarkus app located in the [demo-app](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/demo-app) folder.
 
 It's exposing a REST API for GET method at the path `/pet`
 
@@ -64,7 +64,7 @@ This table explains what is the expected behavior of the delivery mechanisms dep
 
 You can uncomment part of the code of the `PetResource.java` file to adapt the behavior of the application.
 
-Edit the tag version in the [pom.xml](https://github.com/OpenGuidou/argo-projects-demo/blob/main/demo-app/pom.xml#L27):
+Edit the tag version in the [pom.xml](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/demo-app/pom.xml#L27):
 
 ```xml
 <quarkus.container-image.tag>1.0</quarkus.container-image.tag>
@@ -79,7 +79,7 @@ mvn deploy
 
 A small web page allows you to inject request on the production instance, to visualize the behavior of the application.
 
-To open it, go to the [ui folder](https://github.com/OpenGuidou/argo-projects-demo/tree/main/ui) and run:
+To open it, go to the [ui folder](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/ui) and run:
 ```bash
 npm i && ng serve
 ```
@@ -101,7 +101,7 @@ The initial version of the application deployed in test and prod is the 1.0.
 
 ### Version 1.0 to 2.0
 
-We start by mimicking the continuous integration by bumping the application in test to 2.0 in [values-test.yaml](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/test/values-test.yaml#L4).
+We start by mimicking the continuous integration by bumping the application in test to 2.0 in [values-test.yaml](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/test/values-test.yaml#L4).
 
 Argo CD should deploy the new version.
 

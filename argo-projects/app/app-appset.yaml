@@ -5,7 +5,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/OpenGuidou/argo-projects-demo.git
+        repoURL: https://github.com/AmadeusITGroup/argo-projects-demo.git
         revision: HEAD
         files:
           - path: "argo-projects/app/generators/*.json"
@@ -17,7 +17,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/OpenGuidou/argo-projects-demo.git
+        repoURL: https://github.com/AmadeusITGroup/argo-projects-demo.git
         targetRevision: 'HEAD'
         path: 'argo-projects/app/manifests/base'
         helm:

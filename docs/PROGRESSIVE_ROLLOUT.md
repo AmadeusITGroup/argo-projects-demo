@@ -25,7 +25,7 @@ For Argo Rollouts to be able to control the deployment, we start by using the [R
 
 This resource only references the existing `Deployment` and adds the progressive rollout strategy and analysis.
 
-If you look at the [demo app helm chart](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/manifests/base/templates/deployment.yaml), we set the replicas to 0 on the `Deployment` when the Rollout is used, so that the Rollout can control the execution.:
+If you look at the [demo app helm chart](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/manifests/base/templates/deployment.yaml), we set the replicas to 0 on the `Deployment` when the Rollout is used, so that the Rollout can control the execution.:
 
 ```yaml
 spec:
@@ -65,7 +65,7 @@ spec:
 {{- end }}
 ```
 
-The rollout is activated from prod only in the [production values](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/prod/values-prod.yaml#L5):
+The rollout is activated from prod only in the [production values](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/prod/values-prod.yaml#L5):
 
 ```yaml
 rollout:
@@ -102,7 +102,7 @@ spec:
 
 Argo Rollouts controller will also take care of adding the canary hashset in the selectors, to only route the traffic there.
 
-Source [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/manifests/base/templates/service.yaml#L24).
+Source [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/manifests/base/templates/service.yaml#L24).
 
 
 ### The analysis
@@ -159,7 +159,7 @@ spec:
             )
           )
 ```
-Source [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/argo-rollouts/resources/analysis-templates.yaml).
+Source [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/argo-rollouts/resources/analysis-templates.yaml).
 
 It's taking as argument the production (stable) and the canary replicaset hashes, to be able to run Prometheus queries and compare their results.
 
@@ -213,4 +213,4 @@ We'll start from 20% of the traffic on the canary, and increase progressively. T
           stableIngress: app-prod-my-app-ingress # Ref to the production ingress
 ```
 
-Source [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/prod/values-prod.yaml#L6).
+Source [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/prod/values-prod.yaml#L6).

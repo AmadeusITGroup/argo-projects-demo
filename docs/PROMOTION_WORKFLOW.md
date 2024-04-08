@@ -63,7 +63,7 @@ spec:
           - "{{inputs.parameters.test_target}}"
 ```
 
-This workflow executes a robot framework test campaign located [here](https://github.com/OpenGuidou/argo-projects-demo/tree/main/workflow-resources/test-campaign), validating that the application returns a valid Pet on its endpoint.
+This workflow executes a robot framework test campaign located [here](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/workflow-resources/test-campaign), validating that the application returns a valid Pet on its endpoint.
 
 
 #### Git promotion workflow:
@@ -118,9 +118,9 @@ spec:
                 key: email
 ```
 
-The workflow executes a small [python script](https://github.com/OpenGuidou/argo-projects-demo/tree/main/workflow-resources/git-promotion) pushing the application version from the "source_folder" on the commit hash "source_commit" to the "target_folder" on the "main" branch.
+The workflow executes a small [python script](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/workflow-resources/git-promotion) pushing the application version from the "source_folder" on the commit hash "source_commit" to the "target_folder" on the "main" branch.
 
-In more pratical terms, it'll align the version from the test phase defined [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/test/values-test.yaml#L4), to the production phase defined [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/prod/values-prod.yaml#L2).
+In more pratical terms, it'll align the version from the test phase defined [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/test/values-test.yaml#L4), to the production phase defined [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/manifests/overlays/prod/values-prod.yaml#L2).
 
 The fact to take the synchronization commit hash as parameter ensures you are promoting the application version that was tested before, in case a new commit would bump it in test during the process.
 
@@ -182,7 +182,7 @@ spec:
                   value: "{{workflow.parameters.test_docker_command}}"
 ```
 
-Sources from [workflow-templates.yaml](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/argo-workflows/resources/workflow-templates.yaml).
+Sources from [workflow-templates.yaml](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/argo-workflows/resources/workflow-templates.yaml).
 
 
 ### Configuring Argo Events
@@ -250,7 +250,7 @@ spec:
                     - name: test_docker_command
                       value: "./launchTests.sh"
                     - name: git_repo
-                      value: "https://github.com/OpenGuidou/argo-projects-demo.git"
+                      value: "https://github.com/AmadeusITGroup/argo-projects-demo.git"
                     - name: git_credentials_secret
                       value: "github-credentials"
                 workflowTemplateRef:
@@ -287,7 +287,7 @@ spec:
 
 With this setup, an HTTP POST to the `webhook-service:12001/appSyncSuccess` will trigger the creation of a Workflow, following the template `workflow-template-validate-then-promote`.
 
-Sources from [Argo Events resources](https://github.com/OpenGuidou/argo-projects-demo/tree/main/argo-projects/argo-events/resources).
+Sources from [Argo Events resources](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/argo-projects/argo-events/resources).
 
 You can see here that the github credentials are read from the `Secret` called `github-credentials`.
 You would usually have that created securely with something like the [External Secret Operator](https://external-secrets.io/latest/).
@@ -349,7 +349,7 @@ data:
       oncePer: app.status.operationState.operation.sync.revision
       send: [sync-success-test]
 ```
-Source from [notification-cm.yaml](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/argo-cd/patches/notification-cm.yaml).
+Source from [notification-cm.yaml](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/argo-cd/patches/notification-cm.yaml).
 
 In the sync-sucess-test notification, we are sending a HTTP POST to our Argo Event webhook, sending in the body the parameters required for the workflow to run: the application endpoint to run the tests, the source phase, the target phase, and the commit hash having triggered the Argo CD synchronization.
 
@@ -370,4 +370,4 @@ metadata:
     notifications.argoproj.io/subscribe.on-sync-success.sync-webhook: "" 
 ```
 
-Source [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/app/app-appset.yaml#L16).
+Source [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/app/app-appset.yaml#L16).

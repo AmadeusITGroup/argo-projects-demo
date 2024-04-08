@@ -4,7 +4,7 @@ You have seen with the [platform installation](PLATFORM_INSTALLATION.md) that Ar
 
 Let's take a tour around those resources so that you understand how it works.
 
-The single entrypoint for Argo CD is a [kustomization file](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/kustomization.yaml):
+The single entrypoint for Argo CD is a [kustomization file](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/kustomization.yaml):
 
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -25,7 +25,7 @@ Each of those `Applications` are referencing the git repository, in their own fo
 
 ## Argo CD
 
-In the Argo CD `Application`, and [folder](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/argo-cd/kustomization.yaml), we are deploying:
+In the Argo CD `Application`, and [folder](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/argo-cd/kustomization.yaml), we are deploying:
 
 * The latest Argo CD manifests from github
 * The `argocd` namespace
@@ -34,7 +34,7 @@ In the Argo CD `Application`, and [folder](https://github.com/OpenGuidou/argo-pr
 
 ## Argo Workflows
 
-In the Argo Workflows `Application`, and [folder](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/argo-workflows/kustomization.yaml), we are deploying:
+In the Argo Workflows `Application`, and [folder](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/argo-workflows/kustomization.yaml), we are deploying:
 
 * The latest Argo Workflwos manifests from github
 * The `argo` namespace
@@ -44,7 +44,7 @@ In the Argo Workflows `Application`, and [folder](https://github.com/OpenGuidou/
 
 ## Argo Events
 
-In the Argo Events `Application`, and [folder](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/argo-events/kustomization.yaml), we are deploying:
+In the Argo Events `Application`, and [folder](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/argo-events/kustomization.yaml), we are deploying:
 
 * The lastest Argo Events manifests from github
 * Patches to deploy those resources in the 'argo' namespace, alongside Argo Workflows
@@ -52,7 +52,7 @@ In the Argo Events `Application`, and [folder](https://github.com/OpenGuidou/arg
 
 ## Argo Rollouts
 
-In the Argo Rollouts `Application`, and [folder](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/argo-rollouts/kustomization.yaml), we are deploying:
+In the Argo Rollouts `Application`, and [folder](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/argo-rollouts/kustomization.yaml), we are deploying:
 
 * The lastest Argo Rollouts manifests from github
 * The `argo-rollouts` namespace
@@ -60,15 +60,15 @@ In the Argo Rollouts `Application`, and [folder](https://github.com/OpenGuidou/a
 
 ## Infra
 
-In the Infra `Application`, and [folder](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/infra/kustomization.yaml), we are deploying:
+In the Infra `Application`, and [folder](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/infra/kustomization.yaml), we are deploying:
 
 * The `infra` namespace
-* The prometheus stack, nginx ingress controller and docker registry using a [multi-source Application](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/): ref [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/infra/infra-app.yaml#L7-L29).
-* A `ServiceMonitor` to scrape the prometheus metrics from the demo app on both test and prod namespaces: ref [here](https://github.com/OpenGuidou/argo-projects-demo/blob/main/argo-projects/infra/resources/app-service-monitor.yaml)
+* The prometheus stack, nginx ingress controller and docker registry using a [multi-source Application](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/): ref [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/infra/infra-app.yaml#L7-L29).
+* A `ServiceMonitor` to scrape the prometheus metrics from the demo app on both test and prod namespaces: ref [here](https://github.com/AmadeusITGroup/argo-projects-demo/blob/main/argo-projects/infra/resources/app-service-monitor.yaml)
 
 ## The demo application
 
-In the app `ApplicationSet` and [folder](https://github.com/OpenGuidou/argo-projects-demo/tree/main/argo-projects/app), we are deploying the helm chart of the demo application that contains:
+In the app `ApplicationSet` and [folder](https://github.com/AmadeusITGroup/argo-projects-demo/tree/main/argo-projects/app), we are deploying the helm chart of the demo application that contains:
 
 * A `Namespace` (for convenience, you would probably not use that inside your application chart)
 * A `Deployment`
@@ -82,7 +82,7 @@ The `ApplicationSet` is using json file generators to generate the two correspon
 spec:
   generators:
     - git:
-        repoURL: https://github.com/OpenGuidou/argo-projects-demo.git
+        repoURL: https://github.com/AmadeusITGroup/argo-projects-demo.git
         revision: HEAD
         files:
           - path: "argo-projects/app/generators/*.json"
